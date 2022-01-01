@@ -20,7 +20,7 @@ var calendar = document.getElementById("calendar");
 var lang = calendar.getAttribute('data-lang');
 
 var months = ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"];
-var months_eng = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+var monthsEng = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 var days = ["日", "月", "火", "水", "木", "金", "土"];
 
 var dayHeader = "<tr>";
@@ -41,14 +41,20 @@ monthAndYear = document.getElementById("monthAndYear");
 showCalendar(currentMonth, currentYear);
 
 function next() {
-    currentYear = (currentMonth === 11) ? currentYear + 1 : currentYear;
+    if(currentMonth == 11){
+        currentYear = currentYear + 1;
+    }
     currentMonth = (currentMonth + 1) % 12;
     showCalendar(currentMonth, currentYear);
 }
 
 function previous() {
-    currentYear = (currentMonth === 0) ? currentYear - 1 : currentYear;
-    currentMonth = (currentMonth === 0) ? 11 : currentMonth - 1;
+    if(currentMonth == 0){
+        currentYear = currentYear - 1;
+        currentMonth = 11;
+    }else{
+        currentMonth = currentMonth - 1;
+    }
     showCalendar(currentMonth, currentYear);
 }
 
@@ -73,7 +79,7 @@ function showCalendar(month, year) {
 
     tbl.innerHTML = "";
 
-    monthAndYear.innerHTML = year + "年 "+ months[month]+ " <span id=\"month_eng\">" + months_eng[month] + "</span>";
+    monthAndYear.innerHTML = year + "年 "+ months[month]+ " <span id=\"month_eng\">" + monthsEng[month] + "</span>";
     selectYear.value = year;
     selectMonth.value = month;
 
@@ -97,7 +103,7 @@ function showCalendar(month, year) {
                 cell.setAttribute("data-year", year);
                 cell.setAttribute("data-month_name", months[month]);
                 cell.className = "date-picker";
-                var eventId = "event" + year + month + date;
+                var eventId = setEventId(year, month, date);
                 var eventView = "<div class ='event' id=\"" + eventId + "\">event</div> ";
                 console.log(eventView);
                 cell.innerHTML = "<span onmouseover=\"showEvent('"+ eventId + "')\" onmouseout=\"hideEvent('"+ eventId + "')\">" + date + "</span>" + eventView;
@@ -106,7 +112,6 @@ function showCalendar(month, year) {
                     cell.className = "date-picker selected";
                 }
                 row.appendChild(cell);
-                console.log(cell);
                 date++;
             }
         }
