@@ -97,3 +97,14 @@
     border-radius: 3px;
     padding: 5px 1em;
 }
+
+.event {
+    color: white;
+    font-weight: normal;
+    position:absolute;
+    visibility:hidden; 
+    font-size:0.8em; 
+    background-color:mediumseagreen;
+    border-radius: 6px;
+    padding: 5px 1em;
+}

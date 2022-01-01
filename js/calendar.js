@@ -67,13 +67,13 @@ function jump() {
 function showCalendar(month, year) {
 
     var firstDay = ( new Date( year, month ) ).getDay();
+    console.log(firstDay)
 
     tbl = document.getElementById("calendar-body");
 
     tbl.innerHTML = "";
 
-    // monthAndYear.innerHTML = months[month] + " " + year;
-    monthAndYear.innerHTML = year+"年 "+ months[month]+ " <span id=\"month_eng\">" + months_eng[month] + "</span>";
+    monthAndYear.innerHTML = year + "年 "+ months[month]+ " <span id=\"month_eng\">" + months_eng[month] + "</span>";
     selectYear.value = year;
     selectMonth.value = month;
 
@@ -97,12 +97,16 @@ function showCalendar(month, year) {
                 cell.setAttribute("data-year", year);
                 cell.setAttribute("data-month_name", months[month]);
                 cell.className = "date-picker";
-                cell.innerHTML = "<span>" + date + "</span>";
+                var eventId = "event" + year + month + date;
+                var eventView = "<div class ='event' id=\"" + eventId + "\">event</div> ";
+                console.log(eventView);
+                cell.innerHTML = "<span onmouseover=\"showEvent('"+ eventId + "')\" onmouseout=\"hideEvent('"+ eventId + "')\">" + date + "</span>" + eventView;
 
                 if ( date === today.getDate() && year === today.getFullYear() && month === today.getMonth() ) {
                     cell.className = "date-picker selected";
                 }
                 row.appendChild(cell);
+                console.log(cell);
                 date++;
             }
         }
