@@ -12,7 +12,7 @@ var currentYear = today.getFullYear();
 var selectYear = document.getElementById("year");
 var selectMonth = document.getElementById("month");
 
-var createYear = generate_year_range(1970, 2200);
+var createYear = generate_year_range(2010, 2030);
 
 document.getElementById("year").innerHTML = createYear;
 
@@ -24,7 +24,13 @@ var days = ["日", "月", "火", "水", "木", "金", "土"];
 
 var dayHeader = "<tr>";
 for (day in days) {
-    dayHeader += "<th data-days='" + days[day] + "'>" + days[day] + "</th>";
+    var day_id = "'";
+    if (days[day] == "土"){
+        day_id = "' id=\"sat\" ";
+    }else if(days[day] == "日"){
+        day_id = "' id=\"sun\"";
+    }
+    dayHeader += "<th data-days='" + days[day] +  day_id + ">" + days[day] + "</th>";
 }
 dayHeader += "</tr>";
 
@@ -42,6 +48,12 @@ function next() {
 function previous() {
     currentYear = (currentMonth === 0) ? currentYear - 1 : currentYear;
     currentMonth = (currentMonth === 0) ? 11 : currentMonth - 1;
+    showCalendar(currentMonth, currentYear);
+}
+
+function thisMonth() {
+    currentMonth = today.getMonth();
+    currentYear = today.getFullYear();
     showCalendar(currentMonth, currentYear);
 }
 

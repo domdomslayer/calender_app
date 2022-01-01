@@ -13,9 +13,9 @@
     cursor: pointer;
     display: inline-block;
     zoom: 1;
-    background: magenta;
-    color: #fff;
-    border: 1px solid pink;
+    background: royalblue;
+    color: white;
+    border: 1px solid aliceblue;
     border-radius: 4px;
     padding: 5px 10px;
 }
@@ -37,17 +37,17 @@
 }
 
 /* 今日の下線 
-.date-picker.selected span {
-    border-bottom: 2px solid currentColor;
+.date-picker.selected span {x
+    border-bottom: 2px solid currentColor;x
 }
 */
 
 /* 日曜 */
-.date-picker:nth-child(1) {
+.date-picker:nth-child(1), #sun{
     color: red;
 }
 /* 土曜 */
-.date-picker:nth-child(7) {
+.date-picker:nth-child(7), #sat {
     color: blue;
 }
 #monthAndYear {
@@ -59,10 +59,16 @@
     margin-bottom: 1em;
     overflow: hidden;
     clear: both;
+    text-align: center;
 }
 #previous {
     float: left;
 }
+
+#thisMonth {
+    font-weight: bold;
+}
+
 #next {
     float: right;
 }
