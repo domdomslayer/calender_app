@@ -20,6 +20,7 @@ var calendar = document.getElementById("calendar");
 var lang = calendar.getAttribute('data-lang');
 
 var months = ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"];
+var months_eng = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 var days = ["日", "月", "火", "水", "木", "金", "土"];
 
 var dayHeader = "<tr>";
@@ -71,7 +72,8 @@ function showCalendar(month, year) {
 
     tbl.innerHTML = "";
 
-    monthAndYear.innerHTML = months[month] + " " + year;
+    // monthAndYear.innerHTML = months[month] + " " + year;
+    monthAndYear.innerHTML = year+"年 "+ months[month]+ " <span id=\"month_eng\">" + months_eng[month] + "</span>";
     selectYear.value = year;
     selectMonth.value = month;
 
