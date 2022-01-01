@@ -1,9 +1,18 @@
+var eventList  = [];
+var demoEvent = { year:2022, month:1, day:4, title:"課題提出"};
+eventList.push(demoEvent)
+console.log(eventList);
+
+
 function showEvent(id){
     var year = id.substr(0, 4);
     var month = id.substr(4, 2);
     var day = id.substr(6, 2);
-    document.getElementById(id).innerHTML = "イベントデモ：課題提出日";	
-    document.getElementById(id).style.visibility = "visible";
+    console.log(year, month, day);
+    if(isEvent(year, month-1, day)){
+        document.getElementById(id).style.visibility = "visible";
+    }
+    
 }
 
 function hideEvent(id){
@@ -12,12 +21,11 @@ function hideEvent(id){
 
 function isEvent(year, month, day){
     for(record in eventList){
-        if(record.year == year && record.month == month && record.day == day){
+        if(eventList[record].year == year && eventList[record].month == (month+1) && eventList[record].day == day){
             return true;
-        }else{
-            return false;
         }
     }
+    return false;
 }
 
 function setEventId(year, month, day){
@@ -37,6 +45,10 @@ function setEventId(year, month, day){
     return eventId;
 }
 
-var eventList  = [];
-var demoEvent = { year:2022, month:1, day:4, title:"課題提出"};
-eventList.push(demoEvent)
+function getEventTitle(year, month, day){
+    for(record in eventList){
+        if(eventList[record].year == year && eventList[record].month == (month+1) && eventList[record].day == day){
+            return eventList[record].title;
+        }
+    }
+}

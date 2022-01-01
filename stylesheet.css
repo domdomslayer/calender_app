@@ -40,11 +40,11 @@
     background: greenyellow;
 }
 
-/* 今日の下線 
-.date-picker.selected span {x
-    border-bottom: 2px solid currentColor;x
+
+.date-picker.isEvent span {
+    border-bottom: 2px solid currentColor;
+    font-weight: bold;
 }
-*/
 
 /* 日曜 */
 .date-picker:nth-child(1), #sun{

@@ -73,7 +73,6 @@ function jump() {
 function showCalendar(month, year) {
 
     var firstDay = ( new Date( year, month ) ).getDay();
-    console.log(firstDay)
 
     tbl = document.getElementById("calendar-body");
 
@@ -103,14 +102,21 @@ function showCalendar(month, year) {
                 cell.setAttribute("data-year", year);
                 cell.setAttribute("data-month_name", months[month]);
                 cell.className = "date-picker";
+
                 var eventId = setEventId(year, month, date);
-                var eventView = "<div class ='event' id=\"" + eventId + "\">event</div> ";
-                console.log(eventView);
+                var eventView = ""
+                if (isEvent(year, month, date)) {
+                    cell.className += " isEvent";
+                    var eventTitle = getEventTitle(year, month, date);
+                    eventView = "<div class ='event' id=\"" + eventId + "\">" + eventTitle + "</div> ";
+                }
+                
+
                 cell.innerHTML = "<span onmouseover=\"showEvent('"+ eventId + "')\" onmouseout=\"hideEvent('"+ eventId + "')\">" + date + "</span>" + eventView;
 
                 if ( date === today.getDate() && year === today.getFullYear() && month === today.getMonth() ) {
-                    cell.className = "date-picker selected";
-                }
+                    cell.className += " selected";
+                } 
                 row.appendChild(cell);
                 date++;
             }
