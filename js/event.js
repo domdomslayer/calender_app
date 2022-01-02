@@ -1,8 +1,3 @@
-//閲覧モードか削除モードか
-document.getElementsByClassName("toViewMode-Button")[0].style.display = "none";
-document.getElementsByClassName("toViewMode-Button")[1].style.display = "none";
-var mode = "VIEW";
-
 var eventList  = [];
 var demoEvent = { year:2022, month:1, day:4, title:"課題提出"};
 var demoEvent2 = { year:2022, month:1, day:1, title:"お正月"};
@@ -94,26 +89,4 @@ function getEventTitle(year, month, day){
             return eventList[record].title;
         }
     }
-}
-
-function getMode(){
-    return mode;
-}
-
-function toDeleteMode(){
-    document.getElementsByClassName("toViewMode-Button")[0].style.display = "inline";
-    document.getElementsByClassName("toViewMode-Button")[1].style.display = "inline";
-    document.getElementsByClassName("toDeleteMode-Button")[0].style.display = "none";
-    document.getElementsByClassName("toDeleteMode-Button")[1].style.display = "none";
-    mode = "DELETE";
-    showCalendar(currentMonth, currentYear);
-}
-
-function toViewMode(){
-    document.getElementsByClassName("toDeleteMode-Button")[0].style.display = "inline";
-    document.getElementsByClassName("toDeleteMode-Button")[1].style.display = "inline";
-    document.getElementsByClassName("toViewMode-Button")[0].style.display = "none";
-    document.getElementsByClassName("toViewMode-Button")[1].style.display = "none";
-    mode = "VIEW";
-    showCalendar(currentMonth, currentYear);
 }
