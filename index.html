@@ -22,22 +22,32 @@
             </table>
             
             <div class="footer-container-calendar">
-                <label for="month">月指定：</label>
-                <select id="month" onchange="jump()">
-                    <option value=0>1月</option>
-                    <option value=1>2月</option>
-                    <option value=2>3月</option>
-                    <option value=3>4月</option>
-                    <option value=4>5月</option>
-                    <option value=5>6月</option>
-                    <option value=6>7月</option>
-                    <option value=7>8月</option>
-                    <option value=8>9月</option>
-                    <option value=9>10月</option>
-                    <option value=10>11月</option>
-                    <option value=11>12月</option>
-                </select>
-                <select id="year" onchange="jump()"></select>
+                <div class="jump-container">
+                    <label for="month">月指定：</label>
+                    <select id="month" onchange="jump()">
+                        <option value=0>1月</option>
+                        <option value=1>2月</option>
+                        <option value=2>3月</option>
+                        <option value=3>4月</option>
+                        <option value=4>5月</option>
+                        <option value=5>6月</option>
+                        <option value=6>7月</option>
+                        <option value=7>8月</option>
+                        <option value=8>9月</option>
+                        <option value=9>10月</option>
+                        <option value=10>11月</option>
+                        <option value=11>12月</option>
+                    </select>
+                    <select id="year" onchange="jump()"></select>
+                </div>
+                <p></p>
+                <div class="addEvent-container">
+                    <label for="eventDate">予定登録：</label>
+                    <input type="date" id="eventDate">
+                    <input type="text" id="eventTitle" placeholder="予定のタイトルを入力">
+                    <button id="addEvent-Button" onclick="addEvent()">登録</button>
+                </div>
+                
             </div>
       </div>
   
