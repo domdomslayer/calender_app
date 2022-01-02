@@ -104,19 +104,24 @@ function showCalendar(month, year) {
                 cell.className = "date-picker";
 
                 var eventId = setEventId(year, month, date);
-                var eventView = ""
+                var eventView = "";
+                var deleteFunc = " ";
                 if (isEvent(year, month, date)) {
                     cell.className += " isEvent";
                     var eventTitle = getEventTitle(year, month, date);
                     eventView = "<div class ='event' id=\"" + eventId + "\">" + eventTitle + "</div> ";
+                    
+                    if(getMode() == "DELETE"){
+                        deleteFunc = " onclick=deleteEvent('"+ eventId + "') ";
+                    }
                 }
-                
-
-                cell.innerHTML = "<span onmouseover=\"showEvent('"+ eventId + "')\" onmouseout=\"hideEvent('"+ eventId + "')\">" + date + "</span>" + eventView;
+        
+                cell.innerHTML = "<span" + deleteFunc + "onmouseover=\"showEvent('"+ eventId + "')\" onmouseout=\"hideEvent('"+ eventId + "')\">" + date + "</span>" + eventView;
 
                 if ( date === today.getDate() && year === today.getFullYear() && month === today.getMonth() ) {
                     cell.className += " selected";
                 } 
+
                 row.appendChild(cell);
                 date++;
             }

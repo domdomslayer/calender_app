@@ -108,3 +108,11 @@
     border-radius: 6px;
     padding: 5px 1em;
 }
+
+.modeChange-container span {
+    font-weight: bold;
+}
+
+.toViewMode-Button span {
+    color: red;
+}
