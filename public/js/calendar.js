@@ -5,7 +5,7 @@ function generate_year_range(start, end) {
     }
     return years;
 }
-  
+
 var today = new Date();
 var currentMonth = today.getMonth();
 var currentYear = today.getFullYear();
@@ -70,6 +70,10 @@ function jump() {
     showCalendar(currentMonth, currentYear);
 }
 
+function reload(){
+    showCalendar(currentMonth, currentYear);
+}
+
 function showCalendar(month, year) {
 
     var firstDay = ( new Date( year, month ) ).getDay();
@@ -106,27 +110,16 @@ function showCalendar(month, year) {
                 var eventId = setEventId(year, month, date);
                 var eventView = "";
                 var deleteFunc = " ";
-                if (isEvent(year, month, date)) {
-                    cell.className += " isEvent";
-                    var eventTitle = getEventTitle(year, month, date);
-                    eventView = "<div class ='event' id=\"" + eventId + "\">" + eventTitle + "</div> ";
-                    
-                    if(getMode() == "DELETE"){
-                        deleteFunc = " onclick=deleteEvent('"+ eventId + "') ";
-                    }
-                }
-        
-                cell.innerHTML = "<span" + deleteFunc + "onmouseover=\"showEvent('"+ eventId + "')\" onmouseout=\"hideEvent('"+ eventId + "')\">" + date + "</span>" + eventView;
-
+                isEvent(year, month + 1, date, cell, eventId, eventView, deleteFunc);
+                
                 if ( date === today.getDate() && year === today.getFullYear() && month === today.getMonth() ) {
                     cell.className += " selected";
                 } 
-
                 row.appendChild(cell);
+                //console.log(cell)
                 date++;
             }
         }
-
         tbl.appendChild(row);
     }
 }
