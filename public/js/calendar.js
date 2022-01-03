@@ -111,12 +111,11 @@ function showCalendar(month, year) {
                 var eventView = "";
                 var deleteFunc = " ";
                 isEvent(year, month + 1, date, cell, eventId, eventView, deleteFunc);
-                
+
                 if ( date === today.getDate() && year === today.getFullYear() && month === today.getMonth() ) {
                     cell.className += " selected";
                 } 
                 row.appendChild(cell);
-                //console.log(cell)
                 date++;
             }
         }
